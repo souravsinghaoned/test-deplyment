@@ -1,4 +1,3 @@
-import EmailProvider from "next-auth/providers/email";
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 
@@ -7,17 +6,10 @@ export const authOptions = {
     // Configure one or more authentication providers
 
     providers: [
-        EmailProvider({
-            server: {
-                host: process.env.EMAIL_SERVER_HOST,
-                port: process.env.EMAIL_SERVER_PORT,
-                auth: {
-                    user: process.env.EMAIL_SERVER_USER,
-                    pass: process.env.EMAIL_SERVER_PASSWORD
-                }
-            },
-            from: process.env.EMAIL_FROM
-        }),
+        GithubProvider({
+            clientId: "def48bf2cd6a3a52287c",
+            clientSecret: "c6d5e4c692e79febd25769f89eed49d75bfed42f",
+          }),
     ],
 }
 export default NextAuth(authOptions)
