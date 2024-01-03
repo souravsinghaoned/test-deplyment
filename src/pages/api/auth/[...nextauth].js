@@ -1,5 +1,7 @@
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
+import GoogleProvider from "next-auth/providers/google";
+
 
 
 export const authOptions = {
@@ -7,9 +9,13 @@ export const authOptions = {
 
     providers: [
         GithubProvider({
-            clientId: "def48bf2cd6a3a52287c",
-            clientSecret: "c6d5e4c692e79febd25769f89eed49d75bfed42f",
-          }),
+            clientId: process.env.GITHUB_ID,
+            clientSecret: process.env.GITHUB_SECRET,
+        }),
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET
+        })
     ],
 }
 export default NextAuth(authOptions)
